@@ -1997,7 +1997,7 @@ function () {
 }();
 
 exports.Sync = Sync;
-},{"axios":"node_modules/axios/index.js"}],"src/models/user.ts":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js"}],"src/models/User.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2014,19 +2014,10 @@ var rootUrl = "http://localhost:3000/users";
 var User =
 /** @class */
 function () {
-  function User(data) {
-    this.data = data;
+  function User() {
     this.events = new Eventing_1.Eventing();
     this.sync = new Sync_1.Sync(rootUrl);
   }
-
-  User.prototype.get = function (propName) {
-    return this.data[propName];
-  };
-
-  User.prototype.set = function (update) {
-    Object.assign(this.data, update);
-  };
 
   return User;
 }();
@@ -2039,9 +2030,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var user_1 = require("./models/user");
+var User_1 = require("./models/User");
 
-var user = new user_1.User({
+var user = new User_1.User({
   name: "new record",
   age: 0
 });
@@ -2049,7 +2040,7 @@ user.events.on("change", function () {
   console.log("!change");
 });
 user.events.trigger("change");
-},{"./models/user":"src/models/user.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./models/User":"src/models/User.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
